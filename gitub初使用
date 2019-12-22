@@ -1,0 +1,106 @@
+设置:
+1.生成密钥对
+
+penn@Linux-Mint18 ~ $ ssh-keygen -t rsa -C "xxxx@gmail.com"
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/penn/.ssh/id_rsa): 
+Created directory '/home/penn/.ssh'.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/penn/.ssh/id_rsa.
+Your public key has been saved in /home/penn/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:xxxxxxxxxxxxxxxxxxxxxxxxx xxxx@gmail.com
+The key's randomart image is:
++---[RSA 2048]----+
+|              ooo|
+|  .        . . ..|
+| . .    . o . o .|
+|E   . .. o .   + |
+| .   ...S o   .  |
+|     . =.+.    o.|
+|      +   @.X . *|
+|     . =.= +.B.o.|
+|      . . ..++o  |
++----[SHA256
+
+penn@Linux-Mint18 ~ $ cd .ssh
+penn@Linux-Mint18 ~/.ssh $ ls
+id_rsa  id_rsa.pub
+penn@Linux-Mint18 ~/.ssh $ cat id_rsa.pub 
+ssh-rsa xxxxxxxxxxxxxxxxxxxxxx xxxx@gmail.com
+
+
+
+2.将公钥添加到github
+
+3.检查配置结果
+
+penn@Linux-Mint18 ~/.ssh $ ssh git@github.com
+The authenticity of host 'github.com (192.30.253.113)' can't be established.
+RSA key fingerprint is SHA256:xxxxxxxxxxxxxxxxxx
+Are you sure you want to continue connecting (yes/no)? y
+Please type 'yes' or 'no': yes
+Warning: Permanently added 'github.com,192.30.253.113' (RSA) to the list of known hosts.
+PTY allocation request failed on channel 0
+Hi xxxx! You've successfully authenticated, but GitHub does not provide shell access.
+Connection to github.com closed.
+1
+4.git全局配置
+
+penn@Linux-Mint18 ~/.ssh $ git config --global user.name "xxxx"
+penn@Linux-Mint18 ~/.ssh $ git config --global user.email "xxxx@gmail.com" 
+1
+2
+5.创建本地git目录
+
+penn@Linux-Mint18 ~/.ssh $ cd 
+penn@Linux-Mint18 ~ $ cd Desktop/
+penn@Linux-Mint18 ~/Desktop $ cd github_projects/
+penn@Linux-Mint18 ~/Desktop/github_projects $ ls
+penn@Linux-Mint18 ~/Desktop/github_projects $ mkdir github_hexo
+penn@Linux-Mint18 ~/Desktop/github_projects $ ls
+github_hexo
+penn@Linux-Mint18 ~/Desktop/github_projects $ cd github_hexo/
+penn@Linux-Mint18 ~/Desktop/github_projects/github_hexo $ ls
+penn@Linux-Mint18 ~/Desktop/github_projects/github_hexo $ git init
+初始化空的 Git 仓库于 /home/penn/Desktop/github_projects/github_hexo/.git/
+
+
+
+6.添加github远程仓库
+
+penn@Linux-Mint18 ~/Desktop/github_projects/github_hexo $ git remote add github.io https://github.com/xxxx/xxxx.github.io.git
+penn@Linux-Mint18 ~/Desktop/github_projects/github_hexo $ git remote
+github.io
+
+7.拉取github项目到本地git目录
+
+penn@Linux-Mint18 ~/Desktop/github_projects/github_hexo $ git fetch github.io 
+来自 https://github.com/xxxx/xxxx.github.io
+ * [新分支]          master     -> github.io/master
+penn@Linux-Mint18 ~/Desktop/github_projects/github_hexo $ git status
+位于分支 master
+8.提交新文件到remote
+
+penn@Linux-Mint18 ~/Desktop/github_projects/github_hexo $ touch test.md
+penn@Linux-Mint18 ~/Desktop/github_projects/github_hexo $ git status
+位于分支 master
+未跟踪的文件:
+  （使用 "git add <文件>..." 以包含要提交的内容）
+
+    test.md
+
+提交为空，但是存在尚未跟踪的文件（使用 "git add" 建立跟踪）
+penn@Linux-Mint18 ~/Desktop/github_projects/github_hexo $ git add .
+penn@Linux-Mint18 ~/Desktop/github_projects/github_hexo $ git commit -m "test"
+[master 0fe3106] test
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test.md
+penn@Linux-Mint18 ~/Desktop/github_projects/github_hexo $ git status
+位于分支 master
+无文件要提交，干净的工作区
+penn@Linux-Mint18 ~/Desktop/github_projects/github_hexo $ git push -u github.io master
+Username for 'https://github.com': xxxx
+Password for 'https://xxxx@github.com': 
+
