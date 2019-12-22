@@ -1,0 +1,40 @@
+use student
+go
+
+create table stu_info
+(
+学号 int primary key not null,
+名称 char(20) not null,
+专业方向 varchar(20) not null,
+系部代码 char(10) not null,
+备注 varchar(100)
+)
+go
+
+use student
+go
+alter table stu_info
+add 院系 varchar(50)
+go
+
+use student
+go
+alter table stu_info
+alter column 院系 varchar(50)
+go
+
+use student
+go
+alter table stu_info
+drop column 院系 
+go
+
+use student
+go
+EXEC sp_help stu_info
+go
+
+use student 
+go
+drop table stu_info
+go

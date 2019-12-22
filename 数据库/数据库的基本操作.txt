@@ -1,0 +1,76 @@
+/*1.创建数据库*/
+create database student
+on primary
+(
+name=student,
+filename='d:\data\student.mdf',
+size=200mb,
+maxsize=500mb,
+filegrowth=10%
+)
+log on
+(
+name=student_log,
+filename='d:\data\student.ldf',
+size=5mb,
+maxsize=100mb,
+filegrowth=10%
+)
+go
+/*2.打开数据库*/
+use student
+go
+/*3.添加数据文件*/
+use master
+go
+alter database student
+add file
+(
+name=student_data,
+filename='d:\data\student_data.ndf',
+size=5mb,
+filegrowth=10%
+)
+go
+/*4.添加两个日志文件*/
+use master
+go
+alter database student
+add log file
+(
+name=student1_log,
+filename='d:\data\student1_log.ldf',
+size=5mb,
+filegrowth=10%
+),
+(
+name=student2_log,
+filename='d:\data\student2_log.ldf',
+size=5mb,
+filegrowth=10%
+)
+go
+/*5.删除一个日志文件*/
+alter database student
+remove file student2_log
+go
+/*6.重命名数据库*/
+alter database student
+modify name=student_info
+go
+/*方法二:重命名数据库*/
+EXEC sp_renamedb 'student_info','student'
+go
+/*7.增加数据库容量*/
+alter database student
+modify file
+(
+name=student,
+size=400mb
+)
+go
+/*8.收缩数据库容量*/
+DBCC SHRINKDATABASE('STUDENT',300)
+go
+sp_helpdb student
+drop database student

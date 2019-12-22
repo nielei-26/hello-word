@@ -1,0 +1,68 @@
+use student
+go
+/*1.创建数据表stu_xscj*/
+create table stu_xscj
+(
+xh int primary key not null,
+xm varchar(10) not null,
+xb char(2) not null,
+bj varchar(20) not null,
+zy varchar(20) not null,
+cj numeric(5,1)
+)
+go
+/*2.插入数据*/
+insert into stu_xscj(xh,xm,xb,bj,zy,cj)
+values(10001,'张三','男','网络2','网络',92.5)
+insert into stu_xscj(xh,xm,xb,bj,zy,cj)
+values(10002,'李四','男','网络3','网络',93.5)
+insert into stu_xscj(xh,xm,xb,bj,zy,cj)
+values(10003,'王五','男','网络4','网络',94.5)
+go
+select * from stu_xscj
+/*3.创建xscj表*/
+create table xscj
+(
+xh int primary key not null,
+xm varchar(10) not null,
+xb char(2) not null,
+bj varchar(20) not null,
+zy varchar(20) not null,
+cj numeric(5,1)
+)
+go
+/*2.插入数据*/
+insert into xscj(xh,xm,xb,bj,zy,cj)
+values(10004,'A1','男','网络2','网络',92.5)
+insert into xscj(xh,xm,xb,bj,zy,cj)
+values(10005,'A2','男','网络3','网络',93.5)
+insert into xscj(xh,xm,xb,bj,zy,cj)
+values(10006,'A3','男','网络4','网络',94.5)
+go
+select * from xscj
+/*把xscj表中的数据批量插入到stu_xscj表中*/
+insert into stu_xscj(xh,xm,xb,bj,zy,cj)
+select * from xscj
+go
+select * from stu_xscj
+go
+
+/*把学号为10001的学生成绩改为95*/
+update stu_xscj
+set cj=95
+where xh=10001
+go
+select * from stu_xscj where xh=10001
+go
+/*每个学生成绩加5分*/
+update stu_xscj
+set cj=cj+5
+go
+select * from stu_xscj 
+/*删除学号为10001的学生*/
+delete stu_xscj where xh=10001
+select * from xscj 
+/*清空数据*/
+truncate table xscj
+/*删除xscj表*/
+drop table xscj
