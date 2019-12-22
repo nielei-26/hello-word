@@ -1,0 +1,15 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+money	.\¸ñÊ½×Ö·û´®.py	/^money = price * weight$/;"	v
+money	.\Æ»¹û¸Ä½ø.py	/^money = price * weight$/;"	v
+name	.\¸ñÊ½×Ö·û´®.py	/^name = 'å¤§å°æ˜'$/;"	v
+price	.\¸ñÊ½×Ö·û´®.py	/^price = 8.5$/;"	v
+price	.\Æ»¹û¸Ä½ø.py	/^price = float(input("è‹¹æœçš„å•ä»·ï¼š"))$/;"	v
+scale	.\¸ñÊ½×Ö·û´®.py	/^scale = 0.10$/;"	v
+student_no	.\¸ñÊ½×Ö·û´®.py	/^student_no = 10023343$/;"	v
+weight	.\¸ñÊ½×Ö·û´®.py	/^weight = 7.5$/;"	v
+weight	.\Æ»¹û¸Ä½ø.py	/^weight = float(input('è‹¹æœçš„é‡é‡ï¼š'))$/;"	v
